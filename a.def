@@ -1,0 +1,4 @@
+LIBRARY RIN_SHA256_CPP
+EXPORTS
+    Compute_NotUseSIMD @1
+    Compute_UseSIMD @2
