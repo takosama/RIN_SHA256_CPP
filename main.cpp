@@ -77,7 +77,7 @@ alignas(32)  const   uint32_t  K[64]
  0xc67178f2 ,
 };
 
-int Compute_NotUseSIMD(int lng, uint8_t* _input, uint32_t* result)
+extern "C"  int Compute_NotUseSIMD(int lng, unsigned char* _input, uint32_t * result)
 {
     alignas(32)   uint8_t input[64];
     alignas(32)   uint8_t _paded[64];
@@ -236,16 +236,13 @@ int Compute_NotUseSIMD(int lng, uint8_t* _input, uint32_t* result)
     result[7] = a7_ + 0x5be0cd19;
         return a0_;
 }
- 
-
 
 union __K {
     unsigned __int32 dw[64];
     __m128i x[16];
 };
 
-
-__attribute__((__target__("sha"))) int  Compute_UseSIMD(int lng, unsigned char* _input, uint32_t* result)
+extern "C" __attribute__((__target__("sha"))) int  Compute_UseSIMD(int lng, unsigned char* _input, uint32_t* result)
 {
     auto _i = _mm_set_epi8(12, 13, 14, 15, 8, 9, 10, 11, 4, 5, 6, 7, 0, 1, 2, 3);
     auto _ms = _mm256_setr_epi32(3, 2, 7, 6, 1, 0, 5, 4);
@@ -429,9 +426,6 @@ __attribute__((__target__("sha"))) int  Compute_UseSIMD(int lng, unsigned char* 
 
     return result[0];
 }
-
- 
-
 
 long long int   cnt[16];
 
