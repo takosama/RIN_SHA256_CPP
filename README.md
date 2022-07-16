@@ -8,3 +8,5 @@ visual studio 2022 +
 user ryzen7 5800h+icc
 not simd 33MH/s
 simd 175MH/s
+
+win avx2 sha dll relesed
